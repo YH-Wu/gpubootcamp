@@ -21,7 +21,8 @@ RUN apt-get update -y && \
         ca-certificates \
         gnupg \
         wget && \
-        apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys F60F4B3D7FA2AF80 && \
+        wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub && \
+        apt-key add 7fa2af80.pub && \
         echo "deb https://developer.download.nvidia.com/devtools/repos/ubuntu2004/amd64/ /" >> /etc/apt/sources.list.d/nsight.list &&\
         apt-get update -y
 
