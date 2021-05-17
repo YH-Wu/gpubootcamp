@@ -7,7 +7,7 @@
 FROM nvcr.io/nvidia/nvhpc:20.11-devel-cuda_multi-ubuntu20.04
 
 RUN apt-get -y update && \
-        DEBIAN_FRONTEND=noninteractive apt-get -yq install --no-install-recommends python3-pip python3-setuptools nginx zip make build-essential libtbb-dev && \
+        DEBIAN_FRONTEND=noninteractive apt-get -yq install --no-install-recommends python3-pip python3-setuptools nginx zip make time build-essential libtbb-dev && \
         rm -rf /var/lib/apt/lists/* && \
         pip3 install --upgrade pip &&\
         pip3 install --no-cache-dir jupyter &&\
