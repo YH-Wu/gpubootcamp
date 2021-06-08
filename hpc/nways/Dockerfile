@@ -8,9 +8,8 @@ FROM nvcr.io/nvidia/nvhpc:20.11-devel-cuda_multi-ubuntu20.04
 
 RUN apt-get -y update && \
         DEBIAN_FRONTEND=noninteractive apt-get -yq install --no-install-recommends python3-pip python3-setuptools nginx zip make time build-essential libtbb-dev && \
-        rm -rf /var/lib/apt/lists/* && \
-        pip3 install --upgrade pip &&\
-        pip3 install --no-cache-dir jupyter &&\
+        pip3 install --upgrade pip && \
+        pip3 install --no-cache-dir jupyter && \
         pip3 install gdown
 
 ############################################
@@ -23,10 +22,11 @@ RUN apt-get update -y && \
         wget && \
         wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub && \
         apt-key add 7fa2af80.pub && \
-        echo "deb https://developer.download.nvidia.com/devtools/repos/ubuntu2004/amd64/ /" >> /etc/apt/sources.list.d/nsight.list &&\
+        echo "deb https://developer.download.nvidia.com/devtools/repos/ubuntu2004/amd64/ /" >> /etc/apt/sources.list.d/nsight.list && \
         apt-get update -y
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends nsight-systems-2020.5.1 nsight-compute-2020.2.1 
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends nsight-systems-2020.5.1 nsight-compute-2020.2.1 && \
+        rm -rf /var/lib/apt/lists/*
 
 # TO COPY the data
 COPY nways_labs/ /labs/
